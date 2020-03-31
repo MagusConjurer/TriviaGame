@@ -2,9 +2,37 @@ body {
     color: #ffffff;
     background-image: url(../images/dark_brick_wall/dark_brick_wall.png);
     font-family: "Nanum Gothic";
+    text-align: center;
 }
 
 .navbar-brand{
     font-family: "Shadows Into Light";
     letter-spacing: 3px;
+}
+
+h1 {
+    color: #c0c0c0;
+    margin-top: 25px;
+}
+
+#quote {
+    color: #daa520;
+}
+
+#answers {
+    text-align: center;
+    margin: 25px 0px 25px 0px;
+}
+
+.answer {
+    max-width: 25vw;
+    margin: 0px auto 0px auto;
+}
+
+#score {
+    margin: 25px 0px 25px 0px;
+}
+
+#timer {
+    color: #008080;
 }

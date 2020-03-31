@@ -239,9 +239,7 @@ var trivia = {
     showCorrect : function(item){
         var answers = item.answers;
         if(timeUp == true){
-            console.log("true?");
             for(var j = 0; j < answers.length; j++){
-                console.log("loop?");
                 if(answers[j].isAnswer == true){
                     if(j == 0){
                         $("#answerOne").css("border", "solid 2px green");
@@ -267,8 +265,8 @@ var trivia = {
         $("#answerThree").empty().css("border","none");
         $("#answerFour").empty().css("border","none");
         var newGame = $("<button>").text("Try Again?").attr("id", "newGame").addClass("btn btn-dark");
-        var totals = $("<h3>").html("Correct: " + correctAnswer + " Wrong: " + incorrectAnswer + " No Answer: " + noAnswer).attr("id", "score");
-        $("#timer").append(newGame);
+        var totals = $("<h3>").html("Correct: " + correctAnswer + " | Wrong: " + incorrectAnswer + " | No Answer: " + noAnswer).attr("id", "score");
+        $("#timer").after(newGame);
         $("#timer").append(totals);
         $("#newGame").on("click", function(){
             trivia.startGame();
