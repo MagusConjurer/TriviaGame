@@ -1,6 +1,7 @@
 var seconds;
 var running = true;
 var hasClicked = false;
+var timeUp = false;
 
 var currentquote = {};
 var selectedQuotes = [];
@@ -198,7 +199,7 @@ var trivia = {
                 countdown();
             };
             hasClicked = false;
-        }, 10000);
+        }, 20000);
     },
 
     // Function to update page with currentquote details
@@ -212,7 +213,7 @@ var trivia = {
         var answers = item.answers;
         $(".answer").on("click", function(){
             var clicked = $(this).text();
-            if(hasClicked == false){
+            if(hasClicked == false && timeUp === false){
                 for(var i = 0; i < answers.length; i++){
                     // Check answer and then hasClicked stops from selecting again
                     if(answers[i].answer === clicked && answers[i].isAnswer == true){
@@ -241,11 +242,13 @@ var trivia = {
 };
     
 function countdown(){
-    seconds = 5;
+    seconds = 15;
+    timeUp = false;
     $("#timer").text("Time remaining: " + seconds);
     var timer = setInterval(function(){
         if(seconds === 0){
             $("#timer").text("Time's Up!");
+            timeUp = true;
             clearInterval(timer);
         };
         if(seconds > 0){
