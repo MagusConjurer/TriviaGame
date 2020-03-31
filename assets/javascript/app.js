@@ -186,6 +186,9 @@ var trivia = {
         var i = 0;
         trivia.updatePage(selectedQuotes[i]);
         countdown();
+        setTimeout(function(){
+            trivia.showCorrect(selectedQuotes[i]);
+        },16000);
         var round = setInterval(function(){
             i++;
             if(hasClicked == false){
@@ -197,6 +200,9 @@ var trivia = {
             } else if(i < 5){
                 trivia.updatePage(selectedQuotes[i]);
                 countdown();
+                setTimeout(function(){
+                    trivia.showCorrect(selectedQuotes[i]);
+                },16000);
             };
             hasClicked = false;
         }, 20000);
@@ -229,15 +235,46 @@ var trivia = {
             };            
         });
     },
+
+    showCorrect : function(item){
+        var answers = item.answers;
+        if(timeUp == true){
+            console.log("true?");
+            for(var j = 0; j < answers.length; j++){
+                console.log("loop?");
+                if(answers[j].isAnswer == true){
+                    if(j == 0){
+                        $("#answerOne").css("border", "solid 2px green");
+                    };
+                    if(j == 1){
+                        $("#answerTwo").css("border", "solid 2px green");
+                    };
+                    if(j == 2){
+                        $("#answerThree").css("border", "solid 2px green");
+                    };
+                    if(j == 3){
+                        $("#answerFour").css("border", "solid 2px green");
+                    };
+                };
+            };
+        };
+    },
     
     showScore : function(){
-        $("#quote").remove();
-        $("#answerOne").remove();
-        $("#answerTwo").remove();
-        $("#answerThree").remove();
-        $("#answerFour").remove();
-        var totals = $("<h3>").html("Correct: " + correctAnswer + " Wrong: " + incorrectAnswer + " No Answer: " + noAnswer);
+        $("#quote").empty();
+        $("#answerOne").empty().css("border","none");
+        $("#answerTwo").empty().css("border","none");
+        $("#answerThree").empty().css("border","none");
+        $("#answerFour").empty().css("border","none");
+        var newGame = $("<button>").text("Try Again?").attr("id", "newGame").addClass("btn btn-dark");
+        var totals = $("<h3>").html("Correct: " + correctAnswer + " Wrong: " + incorrectAnswer + " No Answer: " + noAnswer).attr("id", "score");
+        $("#timer").append(newGame);
         $("#timer").append(totals);
+        $("#newGame").on("click", function(){
+            trivia.startGame();
+            $("#score").remove();
+            $("#newGame").remove();
+        });
     }
 };
     
