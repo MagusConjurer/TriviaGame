@@ -1,6 +1,8 @@
 # TriviaGame
 A jQuery trivia game
 
+Link to the live page [here](https://magusconjurer.github.io/TriviaGame/).
+
 This was our third personal project for the Full Stack Developer Bootcamp.
 
 Each round you get 15 seconds to guess which play the Shakespeare quote is from. When the time runs out, you will also be shown the correct answer if you guessed wrong. 
